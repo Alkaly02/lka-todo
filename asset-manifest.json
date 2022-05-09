@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/lka-todo/static/css/main.ab713b69.css",
+    "main.js": "/lka-todo/static/js/main.d44cdd5e.js",
+    "index.html": "/lka-todo/index.html",
+    "main.ab713b69.css.map": "/lka-todo/static/css/main.ab713b69.css.map",
+    "main.d44cdd5e.js.map": "/lka-todo/static/js/main.d44cdd5e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab713b69.css",
+    "static/js/main.d44cdd5e.js"
+  ]
+}
