@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<AllTask todos={todos} setTodos={setTodos} />} />
+          <Route path='/lka-todo' element={<AllTask todos={todos} setTodos={setTodos} />} />
           <Route path='create' element={<AddTask 
                                           taskTitle={taskTitle} 
                                           setTaskTitle={setTaskTitle} 
