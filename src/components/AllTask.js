@@ -27,7 +27,7 @@ const AllTask = ({todos, setTodos}) => {
                     </div>
                 )) 
                 :    
-                <p>Oupss sorry... No todos !!!</p>
+                <p className="text-center">Oupss sorry... No todos !!!</p>
             }
         </div>
     )
