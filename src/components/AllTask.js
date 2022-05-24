@@ -12,13 +12,25 @@ const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos}) => {
 
         setCompletedTodos(prevTodo => [...prevTodo, completed[0]]);
 
+        // display success message
+        document.querySelector('.success-msg').innerHTML = 'Task completed';
+        document.querySelector('.success-msg').style.padding = '0.5rem 1rem';
+        // document.querySelector('.title').style.marginTop = '0rem';
+
+        setTimeout(() => {
+            document.querySelector('.success-msg').innerHTML = '';
+            document.querySelector('.success-msg').style.padding = '0';
+            document.querySelector('.title').style.marginTop = '0';
+        }, 1800)
+
         // Delete the completed todo from the todos
         setTodos(todos.filter( todo => todo.id !== id));
     }
 
     return (
-        <div className="container mt-2">
-            <h1 className="text-center fs-1 mb-4">All tasks</h1>
+        <div className="container mt-2 relative-position">
+            <div className="success-msg text-light text-center"></div>
+            <h1 className="text-center fs-1 mb-4 title">All tasks</h1>
             {
                 (todos.length !== 0) ?  todos.map((todo, index) => (
                     <div className="card border-secondary mb-3" key={todo.id}>

@@ -43,3 +43,21 @@ textarea{
   border: none !important;
 }
 
+.relative-position{
+  position: relative;
+}
+
+.success-msg {
+  position: absolute;
+  right: 2%;
+  top: -45%;
+  max-width: 300px;
+  border-radius: 10px;
+  background-color: #fd9904;
+}
+
+@media screen and (max-width: 500px) {
+  .success-msg {
+    top: -50%;
+  }  
+}
