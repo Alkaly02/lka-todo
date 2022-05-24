@@ -1,25 +1,26 @@
 
 import { useNavigate } from "react-router-dom";
 import {v4 as uuid} from "uuid";
+import PropTypes from 'prop-types'
 
 const AddTask = ({taskTitle, setTaskTitle, taskDescription ,setTaskDescription, todos, setTodos}) => {
 
     let navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    function handleSubmit(e) {
         e.preventDefault();
 
         let todo = {
             id: uuid(),
             title: taskTitle,
-            body: taskDescription
+            body: taskDescription,
+            completed: false
         }
 
         setTodos( prevState => [...prevState, todo]);
         navigate('/lka-todo');
         setTaskTitle('');
-        setTaskDescription('');
-        
+        setTaskDescription('');       
     }
 
     return ( 
@@ -54,5 +55,15 @@ const AddTask = ({taskTitle, setTaskTitle, taskDescription ,setTaskDescription, 
         </section>
     );
 }
+
+AddTask.propTypes = {
+    taskTitle: PropTypes.string.isRequired,
+    setTaskTitle: PropTypes.string.isRequired,
+    taskDescription: PropTypes.string.isRequired,
+    setTaskDescription: PropTypes.string.isRequired,
+    todos: PropTypes.array.isRequired,
+    setTodos: PropTypes.array.isRequired
+
+};
  
 export default AddTask;

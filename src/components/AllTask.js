@@ -1,12 +1,19 @@
 
-
-const AllTask = ({todos, setTodos}) => {
+const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos}) => {
 
     const handleDelete = (id) => {
-
         const newTodos = todos.filter( todo => todo.id !== id);
-
         setTodos(newTodos);
+    }
+
+    const handleCompleted = (id) =>{
+        const completed = todos.filter(todo => todo.id === id);
+        completed[0].completed = true;
+
+        setCompletedTodos(prevTodo => [...prevTodo, completed[0]]);
+
+        // Delete the completed todo from the todos
+        setTodos(todos.filter( todo => todo.id !== id));
     }
 
     return (
@@ -17,9 +24,15 @@ const AllTask = ({todos, setTodos}) => {
                     <div className="card border-secondary mb-3" key={todo.id}>
                         <h5 className="card-header d-flex">
                             {todo.title}
-                            <button
-                                onClick={() => handleDelete(todo.id)} className="btn close-btn btn-secondary ms-auto fs-6"
-                            >x</button>
+                            <div className="ms-auto">
+                                <button
+                                    onClick={() => handleCompleted(todo.id)} className="btn close-btn btn-success fs-6"
+                                >c</button>
+                                <button
+                                    onClick={() => handleDelete(todo.id)} className="btn close-btn btn-secondary ms-2 fs-6"
+                                >x</button>
+                            </div>
+                            
                         </h5>
                         <div className="card-body text-success">
                             <p className="card-text text-secondary fs-6">{todo.body}</p>
