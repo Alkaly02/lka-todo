@@ -41,7 +41,7 @@ function App() {
             } 
           />
           <Route 
-            path='create' 
+            path='/create' 
             element={
               <AddTask 
               taskTitle={taskTitle} 
@@ -53,7 +53,7 @@ function App() {
             />
           } 
           />
-          <Route path='completed' element={<CompletedTodos completedTodos={completedTodos} />} />
+          <Route path='/completed' element={<CompletedTodos completedTodos={completedTodos} />} />
         </Routes>
       </BrowserRouter>
     </div>
