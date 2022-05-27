@@ -1,5 +1,5 @@
 
-const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos}) => {
+const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos, setArchivedTodos}) => {
 
     const handleDelete = (id) => {
         const newTodos = todos.filter( todo => todo.id !== id);
@@ -15,7 +15,6 @@ const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos}) => {
         // display success message
         document.querySelector('.success-msg').innerHTML = 'Task completed';
         document.querySelector('.success-msg').style.padding = '0.5rem 1rem';
-        // document.querySelector('.title').style.marginTop = '0rem';
 
         setTimeout(() => {
             document.querySelector('.success-msg').innerHTML = '';
@@ -23,8 +22,15 @@ const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos}) => {
             document.querySelector('.title').style.marginTop = '0';
         }, 1800)
 
-        // Delete the completed todo from the todos
+        // Delete the completed todo from todos
         setTodos(todos.filter( todo => todo.id !== id));
+    }
+
+    const handleArchived = (id) => {
+        const newArchivedTodo = todos.filter(todo => todo.id === id);
+        setArchivedTodos(prevState => [...prevState, newArchivedTodo[0]])
+        // delete the archived todo from todos
+        handleDelete(id);
     }
 
     return (
@@ -41,7 +47,10 @@ const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos}) => {
                                     onClick={() => handleCompleted(todo.id)} className="btn close-btn btn-success fs-6"
                                 >c</button>
                                 <button
-                                    onClick={() => handleDelete(todo.id)} className="btn close-btn btn-secondary ms-2 fs-6"
+                                    onClick={() => handleArchived(todo.id)} className="btn close-btn btn-info mx-2 fs-6"
+                                >v</button>
+                                <button
+                                    onClick={() => handleDelete(todo.id)} className="btn close-btn btn-secondary fs-6"
                                 >x</button>
                             </div>
                             
