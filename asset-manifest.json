@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/lka-todo/static/css/main.b5136fa7.css",
-    "main.js": "/lka-todo/static/js/main.cec1b03a.js",
+    "main.js": "/lka-todo/static/js/main.1a1e300a.js",
     "index.html": "/lka-todo/index.html",
     "main.b5136fa7.css.map": "/lka-todo/static/css/main.b5136fa7.css.map",
-    "main.cec1b03a.js.map": "/lka-todo/static/js/main.cec1b03a.js.map"
+    "main.1a1e300a.js.map": "/lka-todo/static/js/main.1a1e300a.js.map"
   },
   "entrypoints": [
     "static/css/main.b5136fa7.css",
-    "static/js/main.cec1b03a.js"
+    "static/js/main.1a1e300a.js"
   ]
 }
