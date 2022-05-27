@@ -30,12 +30,12 @@ const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos, setArchive
         const newArchivedTodo = todos.filter(todo => todo.id === id);
         setArchivedTodos(prevState => [...prevState, newArchivedTodo[0]])
         // display success message
-        document.querySelector('.success-msg').innerHTML = 'Task archived';
-        document.querySelector('.success-msg').style.padding = '0.5rem 1rem';
+        document.querySelector('.success-msg-2').innerHTML = 'Task archived';
+        document.querySelector('.success-msg-2').style.padding = '0.5rem 1rem';
 
         setTimeout(() => {
-            document.querySelector('.success-msg').innerHTML = '';
-            document.querySelector('.success-msg').style.padding = '0';
+            document.querySelector('.success-msg-2').innerHTML = '';
+            document.querySelector('.success-msg-2').style.padding = '0';
             document.querySelector('.title').style.marginTop = '0';
         }, 1800)
         // delete the archived todo from todos
@@ -45,6 +45,7 @@ const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos, setArchive
     return (
         <div className="container mt-2 relative-position">
             <div className="success-msg text-light text-center"></div>
+            <div className="success-msg success-msg-2 text-light text-center"></div>
             <h1 className="text-center fs-1 mb-4 title">All tasks</h1>
             {
                 (todos.length !== 0) ?  todos.map((todo, index) => (
