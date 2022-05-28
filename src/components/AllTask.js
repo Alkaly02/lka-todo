@@ -23,7 +23,7 @@ const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos, setArchive
         }, 1800)
 
         // Delete the completed todo from todos
-        setTodos(todos.filter( todo => todo.id !== id));
+        handleDelete(id);
     }
 
     const handleArchived = (id) => {

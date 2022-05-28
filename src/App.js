@@ -62,7 +62,14 @@ function App() {
           } 
           />
           <Route path='/completed' element={<CompletedTodos completedTodos={completedTodos} />} />
-          <Route path='/archived' element={<ArchivedTasks archivedTodos={archivedTodos} />} />
+          <Route 
+            path='/archived' 
+            element={<ArchivedTasks 
+              archivedTodos={archivedTodos} 
+              setTodos={setTodos} 
+              setArchivedTodos={setArchivedTodos} 
+            />} 
+          />
         </Routes>
       </BrowserRouter>
     </div>
