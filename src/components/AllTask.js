@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { AppGlobalContext } from "../App";
 
-const AllTask = ({todos, setTodos, completedTodos, setCompletedTodos, setArchivedTodos}) => {
+const AllTask = () => {
 
+    const {todos, setTodos, setCompletedTodos, setArchivedTodos} = useContext(AppGlobalContext)
+    
     const handleDelete = (id) => {
         const newTodos = todos.filter( todo => todo.id !== id);
         setTodos(newTodos);

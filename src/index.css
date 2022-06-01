@@ -15,6 +15,12 @@ a{
   border-radius: 8px;
 }
 
+.login-btn, .signup-btn{
+  text-decoration: underline !important;
+  background-color: white;
+}
+
+
 a:hover {
   color: rgb(229, 238, 238) !important;
 }
@@ -60,4 +66,11 @@ textarea{
   .success-msg {
     top: -50%;
   }  
+}
+
+@media screen and (max-width: 379px) {
+  nav button {
+    margin-top: 1rem;
+    margin-left: 0 !important;
+  }
 }

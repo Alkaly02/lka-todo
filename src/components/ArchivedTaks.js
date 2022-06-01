@@ -1,4 +1,9 @@
-const ArchivedTasks = ({archivedTodos, setTodos, setArchivedTodos}) => {
+import { useContext } from "react";
+import { AppGlobalContext } from "../App";
+
+const ArchivedTasks = () => {
+
+    const {archivedTodos, setTodos, setArchivedTodos} = useContext(AppGlobalContext)
 
     const handleDesableAchieved = (id) => {
         const desabledArchive = archivedTodos.filter(todo => todo.id === id);

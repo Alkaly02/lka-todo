@@ -1,9 +1,13 @@
 
 import { useNavigate } from "react-router-dom";
 import {v4 as uuid} from "uuid";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { AppGlobalContext } from "../App";
+import { useContext } from "react";
 
-const AddTask = ({taskTitle, setTaskTitle, taskDescription ,setTaskDescription, todos, setTodos}) => {
+const AddTask = () => {
+
+    const {taskTitle, setTaskTitle, taskDescription ,setTaskDescription, setTodos} = useContext(AppGlobalContext)
 
     let navigate = useNavigate();
 

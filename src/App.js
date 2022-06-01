@@ -1,12 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css'
-import Navbar from "./components/Navbar";
+import './index.css';
+import { AuthProvider } from './context/UserContext';
+import Signup from './components/Signup';
+import Private from './components/private/Private';
 import AddTask from "./components/AddTask";
 import AllTask from "./components/AllTask";
 import CompletedTodos from './components/CompletedTodos';
 import ArchivedTasks from './components/ArchivedTaks';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Login from './components/Login';
+
+export const AppGlobalContext = React.createContext({});
 
 function App() {
   const savedTodos = JSON.parse(localStorage.getItem('todos'));
@@ -18,6 +23,19 @@ function App() {
   const [todos, setTodos] = useState(savedTodos ? savedTodos : []);
   const [completedTodos, setCompletedTodos] = useState(savedCompletedTodos ? savedCompletedTodos : []);
   const [archivedTodos, setArchivedTodos] = useState(savedArchivedTodos ? savedArchivedTodos : []);
+
+  const appContext = {
+    taskTitle,
+    setTaskTitle,
+    taskDescription,
+    setTaskDescription,
+    todos,
+    setTodos,
+    completedTodos,
+    setCompletedTodos,
+    archivedTodos,
+    setArchivedTodos
+  }
 
   useEffect(() => {
     localStorage.setItem('completedTodos', JSON.stringify(completedTodos));
@@ -33,45 +51,23 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route 
-            path='/lka-todo' 
-            element={
-              <AllTask 
-              todos={todos} 
-              setTodos={setTodos} 
-              completedTodos={completedTodos}
-              setCompletedTodos={setCompletedTodos}
-              setArchivedTodos={setArchivedTodos}
-              />
-            } 
-          />
-          <Route 
-            path='/create' 
-            element={
-              <AddTask 
-              taskTitle={taskTitle} 
-              setTaskTitle={setTaskTitle} 
-              todos={todos} 
-              setTodos={setTodos}
-              taskDescription={taskDescription} 
-              setTaskDescription={setTaskDescription}
-            />
-          } 
-          />
-          <Route path='/completed' element={<CompletedTodos completedTodos={completedTodos} />} />
-          <Route 
-            path='/archived' 
-            element={<ArchivedTasks 
-              archivedTodos={archivedTodos} 
-              setTodos={setTodos} 
-              setArchivedTodos={setArchivedTodos} 
-            />} 
-          />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <AppGlobalContext.Provider value={appContext}>
+          <BrowserRouter>
+            {/* <Navbar /> */}
+            <Routes>
+              <Route path='/lka-todo' element={<Signup />} />
+              <Route path='/lka-todo/login' element={<Login />} />
+              <Route path='/lka-todo/todo' element={<Private />}>
+                <Route path='/lka-todo/todo/all' element={<AllTask />} />
+                <Route path='/lka-todo/todo/create' element={<AddTask />} />
+                <Route path='/lka-todo/todo/completed' element={<CompletedTodos completedTodos={completedTodos} />} />
+                <Route path='/lka-todo/todo/archived' element={<ArchivedTasks />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </AppGlobalContext.Provider>
+      </AuthProvider>
     </div>
   );
 }
