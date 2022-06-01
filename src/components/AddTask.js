@@ -22,7 +22,7 @@ const AddTask = () => {
         }
 
         setTodos( prevState => [...prevState, todo]);
-        navigate('/lka-todo');
+        navigate('/lka-todo/todo/all');
         setTaskTitle('');
         setTaskDescription('');       
     }
